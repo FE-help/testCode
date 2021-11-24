@@ -1,27 +1,33 @@
 <template>
   <div class="top-nav">
     <navMenu></navMenu>
-    <div class="hide">{{$router.currentRoute}}</div>
-    <!--<div>{{JSON.stringify($router.currentRoute)}}</div>-->
-    <div class="fff">我是当前路由：{{$router.currentRoute._rawValue.name}}</div>
+    <div class="fff">我是当前路由：{{currentRoute}}</div>
     <div class="fff">我是首页</div>
     <div class="fff">我是右边栏</div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
     import navMenu from '/src/components/nav/navMenu.vue'
-  let routerInfo = 'a';
+    import { defineComponent, PropType, ref } from 'vue'
+    export default defineComponent({
+        name: 'top',
+        data() {
+            return {
+                currentRoute: this.$router.currentRoute._value.name
+            }
+        },
+        watch:{
+            $route(){
+                this.currentRoute = this.$router.currentRoute._value.name
+            }
+        },
+    })
 </script>
 
 <style scoped lang="less">
   .fff{
     color: #ff505c;
-  }
-  .hide{
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
   }
   .main{
     height:100vh;
