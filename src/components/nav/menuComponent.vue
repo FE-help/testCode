@@ -22,13 +22,8 @@ interface menu {
           }
       },
       data() {
+          return {}
       },
-      computed: {
-          menuList(){
-              console.log(this);
-              return this.props.menuList
-          }
-      }
   })
 </script>
 

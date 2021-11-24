@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-    import navMenu from '/src/components/nav/navMenu.vue'
-    import { defineComponent, PropType, ref } from 'vue'
+    import { defineComponent } from 'vue'
+
     export default defineComponent({
         name: 'top',
         data() {
@@ -23,6 +23,9 @@
             }
         },
     })
+</script>
+<script lang="ts" setup>
+    import navMenu from '/src/components/nav/navMenu.vue'
 </script>
 
 <style scoped lang="less">
