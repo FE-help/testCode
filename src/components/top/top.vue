@@ -9,9 +9,10 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue'
-
+    import navMenu from '/src/components/nav/navMenu.vue'
     export default defineComponent({
         name: 'top',
+        components: { navMenu },
         data() {
             return {
                 currentRoute: this.$router.currentRoute._value.name
@@ -24,9 +25,9 @@
         },
     })
 </script>
-<script lang="ts" setup>
-    import navMenu from '/src/components/nav/navMenu.vue'
-</script>
+<!--<script lang="ts" setup>-->
+    <!--import navMenu from '/src/components/nav/navMenu.vue'-->
+<!--</script>-->
 
 <style scoped lang="less">
   .fff{

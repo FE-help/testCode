@@ -7,24 +7,11 @@
     </ul>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
-
-interface menu {
-    text: string
-    value: string
-}
-  export default defineComponent({
-      name: 'menuComponent',
-      props: {
-          menuList: {
-              type: Array as PropType<menu>
-          }
-      },
-      data() {
-          return {}
-      },
-  })
+<script setup lang="ts">
+import { defineProps } from 'vue'
+const props = defineProps({
+    menuList: Array
+});
 </script>
 
 <style lang="less">
