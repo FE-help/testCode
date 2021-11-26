@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <menuComponent :menuList="menulist"></menuComponent>
+    <menuComponent :menuList="menulist" :menu="menu" :test="test" :book="book"></menuComponent>
 
     <div class="content">
       <router-view></router-view>
@@ -8,19 +8,27 @@
   </div>
 </template>
 <script setup lang="ts">
-  import menuComponent from '/src/components/nav/menuComponent.vue'
-  let menulist = [
-      {text: 'page a1', value: '/A/a1'},
-      {text: 'page a2', value: '/A/a2'},
-  ]
+    import menuComponent from '/src/components/nav/menuComponent.vue'
+    import { Menu } from '../../interface/menu'
+    let menulist: Menu[] = [
+        {text: 'page a1', value: '/A/a1', test: 111},
+        {text: 'page a2', value: '/A/a2', test: 111},
+        {text: 'page a3', value: '/A/a2', test: 111},
+    ];
+    let menu: Menu = {
+        text: 'page a3', value: '/A/a2', test: Number('1111')
+    };
+    let test = 111;
+    let book = {title: '1111'}
 </script>
 
 <style lang="less" scoped>
-  .box{
+  .box {
     display: block;
     overflow: hidden;
     height: 610px;
-    .content{
+
+    .content {
       width: calc(100% - 200px);
       height: 600px;
       float: left;
