@@ -12,14 +12,8 @@
     >
       <el-sub-menu index="2" popper-class="menu-box1">
         <template #title>Workspace</template>
-        <el-menu-item index="2-1">
-          <router-link active-class="fff" to="/home">go to home</router-link>
-        </el-menu-item>
-        <el-menu-item index="2-1">
-          <router-link active-class="fff" to="/A">go to A page</router-link>
-        </el-menu-item>
-        <el-menu-item index="2-2">
-          <router-link active-class="fff" to="/B">go to B page</router-link>
+        <el-menu-item v-for="(menu, index) in menuList" :index="index+''">
+          <router-link active-class="fff" :to="menu.path">{{menu.title}}</router-link>
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
@@ -28,8 +22,9 @@
 
 <script setup lang="ts">
     import {defineComponent, ref} from "vue";
+    import { menuList } from "../../constant/menu";
 
-    const activeIndex = ref("2");
+    const activeIndex = ref('1');
     const handleSelect = () => {}
 </script>
 

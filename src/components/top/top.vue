@@ -1,9 +1,9 @@
 <template>
   <div class="top-nav">
     <navMenu></navMenu>
-    <div class="fff">我是当前路由：{{currentRoute}}</div>
-    <div class="fff">我是首页</div>
-    <div class="fff">我是右边栏</div>
+    <div class="fff path">/{{currentRoute}}</div>
+    <div class="fff title">主题</div>
+    <div class="fff user">用户</div>
   </div>
 </template>
 
@@ -41,10 +41,18 @@
   // 顶导航栏
   .top-nav{
     height:60px;
-    border:1px solid #021329;
     display: flex;
-    justify-content: space-between;
     line-height:60px;
+    text-align: center;
+    .path{
+      width: 100px;
+    }
+    .title{
+      flex: 1;
+    }
+    .user{
+      width: 100px;
+    }
   }
 </style>
 

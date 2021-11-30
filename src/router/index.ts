@@ -8,6 +8,7 @@ import a2 from '../views/A/a2.vue'
 import b from '../views/B/b.vue'
 import b1 from '../views/B/b1.vue'
 import b2 from '../views/B/b2.vue'
+import TodoList from '../views/todoList/TodoList.vue'
 
 
 const history = createWebHistory()
@@ -44,6 +45,12 @@ const routes: Array<RouteRecordRaw> = [
                     {path: 'b1', name: 'b1页面', component: b1},
                     {path: 'b2', name: 'b2页面', component: b2},
                 ]
+            },
+            {
+                path: '/todoList',
+                name: 'todo list',
+                component: TodoList,
+                children: []
             },
         ]
     }
