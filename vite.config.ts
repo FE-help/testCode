@@ -7,8 +7,8 @@ export default defineConfig({
   server: {
     proxy: {//跨域
       // 如果是 /api 打头，则访问地址如下
-      '/api': {
-        target: 'http://localhost:3000',
+      '/1.1': {
+        target: 'http://www.yichenk.com/',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
       },
