@@ -4,18 +4,17 @@ function getInstance(baseUrl: string) {
     const instance = axios.create({
         baseURL: `${baseUrl}`,
         timeout: 10000,
-        headers: {'X-Custom-Header': 'foobar'}
-    });
-
-// 添加请求拦截器
-    axios.interceptors.request.use(function (config) {
-        // 在发送请求之前做些什么
-        config.headers = {
-            ...config.headers,
+        headers: {
+            'X-Custom-Header': 'foobar',
             ['X-LC-Id']: 'nxyzr8b8h1EU6jqinnvYhxdO-gzGzoHsz',
             ['X-LC-Key']: 'pCb1NCrIuBGGhY4GLxebm6pe',
             ['Content-Type']: 'application/json',
-        };
+        }
+    });
+
+// 添加请求拦截器
+    axios.interceptors.request.use((config) => {
+        // 在发送请求之前做些什么
         return config;
     }, function (error) {
         // 对请求错误做些什么
