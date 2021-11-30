@@ -15,12 +15,12 @@
         components: { navMenu },
         data() {
             return {
-                currentRoute: this.$router.currentRoute._value.name
+                currentRoute: this.$router.currentRoute.value.name
             }
         },
         watch:{
             $route(){
-                this.currentRoute = this.$router.currentRoute._value.name
+                this.currentRoute = this.$router.currentRoute.value.name
             }
         },
     })
