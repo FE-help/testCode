@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <menuComponent :menuList="menulist" :menu="menu" :test="test" :book="book"></menuComponent>
+    <menuComponent :menuList="menulist"></menuComponent>
 
     <div class="content">
       <router-view></router-view>
@@ -15,11 +15,6 @@
         {text: 'page a2', value: '/A/a2', test: 111},
         {text: 'page a3', value: '/A/a2', test: 111},
     ];
-    let menu: Menu = {
-        text: 'page a3', value: '/A/a2', test: Number('1111')
-    };
-    let test = 111;
-    let book = {title: '1111'}
 </script>
 
 <style lang="less" scoped>

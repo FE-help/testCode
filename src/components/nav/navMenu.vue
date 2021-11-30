@@ -29,11 +29,8 @@
 <script setup lang="ts">
     import {defineComponent, ref} from "vue";
 
-    const activeIndex = ref("1");
-    const activeIndex2 = ref("1");
-    const handleSelect = (key: any, keyPath: any) => {
-        console.log(key, keyPath);
-    };
+    const activeIndex = ref("2");
+    const handleSelect = () => {}
 </script>
 
 <style scoped lang="less">

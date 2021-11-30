@@ -20,29 +20,12 @@
 <script lang="ts">
   import { defineComponent, PropType } from 'vue'
   import { Menu } from '../../interface/menu'
-  interface Book {
-      title: string
-      author: string
-      year: number
-  }
   export default defineComponent({
       name: 'menuComponent',
       props: {
           menuList: {
               type: Array as PropType<Menu[]>,
               require: true,
-          },
-          menu: {
-              type: Object as PropType<Menu>,
-              validator: (menu: Menu) => !!menu.test
-          },
-          test: {
-              type: String
-          },
-          book: {
-              type: Object as PropType<Book>,
-              required: true,
-              validator: (book: Book) => !!book.title
           },
       }
   })
