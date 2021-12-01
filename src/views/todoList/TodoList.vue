@@ -17,10 +17,10 @@
             const store = useStore();
             const { state, getters } = store;
             const init = () => {
-                store.dispatch(`TodoModule/${GET_TODO}`);
+                store.dispatch(`${GET_TODO}`);
             };
             const handleClickAdd = () => {
-                store.commit(`TodoModule/${ADD_TODO}`, 2);
+                store.commit(`${ADD_TODO}`, 2);
             };
             init();
             return {

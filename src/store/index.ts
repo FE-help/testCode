@@ -6,7 +6,7 @@ export const key: InjectionKey<Store<RootState>> = Symbol();
 
 export const store = createStore<RootState>({
   state: {
-    test: '111'
+    test: 'RootState'
   },
   getters: {},
   mutations: {},
