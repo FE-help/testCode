@@ -9,6 +9,8 @@ function getInstance(baseUrl: string) {
             ['X-LC-Id']: 'nxyzr8b8h1EU6jqinnvYhxdO-gzGzoHsz',
             ['X-LC-Key']: 'pCb1NCrIuBGGhY4GLxebm6pe',
             ['Content-Type']: 'application/json',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
         }
     });
 

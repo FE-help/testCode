@@ -1,33 +1,107 @@
 <template>
   <div>
-    <div>root state:{{test}}</div>
+    <div>root state:{{TodoModule.test}}</div>
     <div>TodoModule state: {{TodoModule.count}}</div>
     <div>TodoModule getters: {{getters['TodoModule/completedTodo']}}</div>
     <div>{{TodoModule.loading}}</div>
-
-    <div><button @click="handleClickAdd()">add count</button></div>
+    <div>{{TodoModule.drawer}}</div>
+    <div>
+      <button @click="handleClickAdd()">add count</button>
+    </div>
+    <div class="common-layout">
+      <el-container>
+        <el-header>Todo List</el-header>
+        <el-main v-loading="TodoModule.loading">
+          <div class="collapse">
+            <el-collapse v-model="activeNames" @change="handleChange">
+              <el-collapse-item v-for="(todo, index) in TodoModule.todoList" :name="index+''" :key="index">
+                <template #title>
+                  <todo-item :todo="todo" :test="111"></todo-item>
+                </template>
+                <div class="text-content">{{todo.content}}</div>
+              </el-collapse-item>
+            </el-collapse>
+          </div>
+        </el-main>
+        <el-footer>
+          <el-row>
+            <el-button v-on:click="handleClickInit">Init</el-button>
+            <el-button type="primary" v-on:click="handleClickAdd">Add Todo</el-button>
+            <el-button type="success">Success</el-button>
+          </el-row>
+        </el-footer>
+      </el-container>
+    </div>
+    <add-todo></add-todo>
   </div>
 </template>
 
 <script lang="ts">
+    import {ref} from 'vue';
     import {useStore} from '../../store';
-    import { GET_TODO, ADD_TODO } from '../../store/todo/todo.types'
+    import {GET_TODO, OPEN_ADD_MODAL, ADD_TODO} from '../../store/todo/todo.types'
+    import TodoItem from '../../components/todoList/TodoItem.vue'
+    import AddTodo from '../../components/todoList/AddTodo.vue'
+
     export default {
+        components: { TodoItem, AddTodo},
         setup() {
             const store = useStore();
-            const { state, getters } = store;
+            const {state, getters} = store;
+            const { TodoModule } = state;
+            const activeNames = ref([]);
+            const handleChange = () => {};
             const init = () => {
-                store.dispatch(`${GET_TODO}`);
+                store.dispatch(`TodoModule/${GET_TODO}`);
             };
             const handleClickAdd = () => {
-                store.commit(`${ADD_TODO}`, 2);
+                store.commit(`TodoModule/${OPEN_ADD_MODAL}`);
+                store.commit(`TodoModule/${ADD_TODO}`, 4);
+            };
+            const handleClickInit = () => {
+                init();
             };
             init();
             return {
                 ...state,
+                TodoModule,
                 getters,
                 handleClickAdd,
+                activeNames,
+                handleChange,
+                handleClickInit,
             }
         }
     }
 </script>
+<style lang="less" scoped>
+  .common-layout {
+    border: 1px solid var(--el-border-color-base);
+    width: 60%;
+    margin: 10px auto;
+    min-width: 500px;
+  }
+
+  .el-header {
+    text-align: center;
+    background-color: #b3c0d1;
+    line-height: 60px;
+  }
+
+  .el-footer {
+    border-top: 1px solid var(--el-border-color-base);
+    background-color: #f4f4f4;
+  }
+
+  .el-main {
+    min-height: 90px;
+  }
+
+  .el-row{
+    padding-top: 10px;
+  }
+
+  .text-content{
+    color: #6a6a6a;
+  }
+</style>

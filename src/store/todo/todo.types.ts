@@ -4,8 +4,13 @@ export const GET_TODO_ERROR = 'GET_TODO_ERROR';
 export const SEND_GET_TODO_REQUEST = 'SEND_GET_TODO_REQUEST';
 
 export const ADD_TODO = 'ADD_TODO';
+export const EDIT_TODO = 'EDIT_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';
 export const ADD_TODO_ERROR = 'ADD_TODO_ERROR';
 export const SEND_ADD_TODO_REQUEST = 'SEND_ADD_TODO_REQUEST';
+
+export const OPEN_ADD_MODAL = 'OPEN_ADD_MODAL';
+export const CLOSE_ADD_MODAL = 'CLOSE_ADD_MODAL';
 
 

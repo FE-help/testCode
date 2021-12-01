@@ -1,5 +1,7 @@
 import {
     ADD_TODO,
+    EDIT_TODO,
+    DELETE_TODO,
     GET_TODO,
     GET_TODO_SUCCESS,
     GET_TODO_ERROR,
@@ -7,9 +9,11 @@ import {
     ADD_TODO_SUCCESS,
     ADD_TODO_ERROR,
     SEND_ADD_TODO_REQUEST,
+    OPEN_ADD_MODAL,
+    CLOSE_ADD_MODAL
 } from "./todo.types";
-import {State} from "./todo.module";
-import {getTodoList, addTodo} from "../../api/todo";
+import {State, Todo, defaultTodo} from "./todo.module";
+import {getTodoList, addTodo, updateTodo, deleteTodo} from "../../api/todo";
 
 export const mutations = {
     [ADD_TODO]: (state: State, payload: any) => {
@@ -34,16 +38,24 @@ export const mutations = {
         state.loading = true;
     },
     [ADD_TODO_SUCCESS]: (state: State) => {
-    //    Do something or nothing
+        //    Do something or nothing
     },
     [ADD_TODO_ERROR]: (state: State, payload: any) => {
         state.loading = false;
         state.errorMessage = payload || '';
+    },
+    [OPEN_ADD_MODAL]: (state: State, payload: Todo) => {
+        state.drawer = true;
+        state.editTodo = payload ? payload : Object.assign({}, defaultTodo)
+    },
+    [CLOSE_ADD_MODAL]: (state: State) => {
+        state.drawer = false;
+        state.editTodo = Object.assign({}, defaultTodo)
     }
 };
 
 export const actions = {
-    [GET_TODO]: ({ commit }: any) => {
+    [GET_TODO]: ({commit}: any) => {
         commit(SEND_GET_TODO_REQUEST);
         getTodoList()
             .then(({data}) => {
@@ -53,15 +65,45 @@ export const actions = {
                 commit(GET_TODO_SUCCESS, data.results)
             })
     },
-    [ADD_TODO]: ({ dispatch, commit } : any, payload: any) => {
+    [ADD_TODO]: ({dispatch, commit}: any, payload: any) => {
         commit(SEND_ADD_TODO_REQUEST);
         addTodo(payload)
             .then(() => {
                 commit(ADD_TODO_SUCCESS);
-                dispatch(GET_TODO)
+                commit(CLOSE_ADD_MODAL);
+                setTimeout(() => {
+                    dispatch(GET_TODO)
+                }, 5000)
             })
-            .catch(({ data }) => {
+            .catch(({data}) => {
                 commit(ADD_TODO_ERROR, data.results)
             })
-    }
+    },
+    [EDIT_TODO]: ({dispatch, commit}: any, {id, todo}: any) => {
+        commit(SEND_ADD_TODO_REQUEST);
+        updateTodo(id, todo)
+            .then(() => {
+                commit(ADD_TODO_SUCCESS);
+                commit(CLOSE_ADD_MODAL);
+                setTimeout(() => {
+                    dispatch(GET_TODO)
+                }, 5000)
+            })
+            .catch(({data}) => {
+                commit(ADD_TODO_ERROR, data.results)
+            })
+    },
+    [DELETE_TODO]: ({dispatch, commit}: any, id: string) => {
+        commit(SEND_ADD_TODO_REQUEST);
+        deleteTodo(id)
+            .then(() => {
+                commit(ADD_TODO_SUCCESS);
+                setTimeout(() => {
+                    dispatch(GET_TODO)
+                }, 5000)
+            })
+            .catch(({data}) => {
+                commit(ADD_TODO_ERROR, data.results)
+            })
+    },
 };
