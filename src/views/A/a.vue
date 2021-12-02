@@ -9,8 +9,7 @@
 </template>
 <script setup lang="ts">
     import menuComponent from '/src/components/nav/menuComponent.vue'
-    import { Menu } from '../../interface/menu'
-    let menulist: Menu[] = [
+    let menulist: menuType.Menu[] = [
         {text: 'page a1', value: '/A/a1', test: 111},
         {text: 'page a2', value: '/A/a2', test: 111},
         {text: 'page a3', value: '/A/a2', test: 111},

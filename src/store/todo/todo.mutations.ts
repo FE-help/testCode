@@ -12,43 +12,43 @@ import {
     OPEN_ADD_MODAL,
     CLOSE_ADD_MODAL
 } from "./todo.types";
-import {State, Todo, defaultTodo} from "./todo.module";
+import {defaultTodo} from "./todo.module";
 import {getTodoList, addTodo, updateTodo, deleteTodo} from "../../api/todo";
 
 export const mutations = {
-    [ADD_TODO]: (state: State, payload: any) => {
+    [ADD_TODO]: (state: todoType.State, payload: any) => {
         state.count += payload
     },
-    [SEND_GET_TODO_REQUEST]: (state: State) => {
+    [SEND_GET_TODO_REQUEST]: (state: todoType.State) => {
         state.todoList = [];
         state.loading = true;
         state.errorMessage = '';
     },
-    [GET_TODO_SUCCESS]: (state: State, payload: any) => {
+    [GET_TODO_SUCCESS]: (state: todoType.State, payload: any) => {
         state.todoList = payload || [];
         state.loading = false;
         state.errorMessage = ''
     },
-    [GET_TODO_ERROR]: (state: State, payload: any) => {
+    [GET_TODO_ERROR]: (state: todoType.State, payload: any) => {
         state.todoList = [];
         state.loading = false;
         state.errorMessage = payload || '';
     },
-    [SEND_ADD_TODO_REQUEST]: (state: State) => {
+    [SEND_ADD_TODO_REQUEST]: (state: todoType.State) => {
         state.loading = true;
     },
-    [ADD_TODO_SUCCESS]: (state: State) => {
+    [ADD_TODO_SUCCESS]: (state: todoType.State) => {
         //    Do something or nothing
     },
-    [ADD_TODO_ERROR]: (state: State, payload: any) => {
+    [ADD_TODO_ERROR]: (state: todoType.State, payload: any) => {
         state.loading = false;
         state.errorMessage = payload || '';
     },
-    [OPEN_ADD_MODAL]: (state: State, payload: Todo) => {
+    [OPEN_ADD_MODAL]: (state: todoType.State, payload: todoType.Todo) => {
         state.drawer = true;
         state.editTodo = payload ? payload : Object.assign({}, defaultTodo)
     },
-    [CLOSE_ADD_MODAL]: (state: State) => {
+    [CLOSE_ADD_MODAL]: (state: todoType.State) => {
         state.drawer = false;
         state.editTodo = Object.assign({}, defaultTodo)
     }
