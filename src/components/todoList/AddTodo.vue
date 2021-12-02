@@ -27,6 +27,7 @@
     import {ElMessageBox, ElNotification} from 'element-plus'
     import {useStore} from '../../store';
     import {CLOSE_ADD_MODAL, ADD_TODO, EDIT_TODO} from '../../store/todo/todo.types'
+    import {EDIT_SUCCESS, EDIT_FAIL, ADD_SUCCESS, ADD_FAIL} from '../../constant/message'
 
     export default {
         setup() {
@@ -48,33 +49,18 @@
                             content: TodoModule.editTodo.content,
                         }
                     }).then(() => {
-                        ElNotification({
-                            title: '提示',
-                            message: '修改成功',
-                            type: 'success',
-                        })
+                        ElNotification(EDIT_SUCCESS)
                     }).catch(() => {
-                        ElNotification({
-                            title: '提示',
-                            message: '修改失败',
-                            type: 'error',
-                        })
+                        ElNotification(EDIT_FAIL)
                     })
                 } else {
                     store.dispatch(`TodoModule/${ADD_TODO}`, Object.assign({}, TodoModule.editTodo))
                         .then(() => {
-                            ElNotification({
-                                title: '提示',
-                                message: '添加成功',
-                                type: 'success',
-                            })
-                        }).catch(() => {
-                        ElNotification({
-                            title: '提示',
-                            message: '添加失败',
-                            type: 'error',
+                            ElNotification(ADD_SUCCESS)
                         })
-                    })
+                        .catch(() => {
+                            ElNotification(ADD_FAIL)
+                        })
                 }
             };
             const onCancel = () => {

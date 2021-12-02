@@ -103,15 +103,19 @@ export const actions = {
     },
     [DELETE_TODO]: ({dispatch, commit}: any, id: string) => {
         commit(SEND_ADD_TODO_REQUEST);
-        deleteTodo(id)
-            .then(() => {
-                commit(ADD_TODO_SUCCESS);
-                setTimeout(() => {
-                    dispatch(GET_TODO)
-                }, 5000)
-            })
-            .catch(({data}) => {
-                commit(ADD_TODO_ERROR, data.results)
-            })
+        return new Promise<void>((resolve, reject) => {
+            deleteTodo(id)
+                .then(() => {
+                    commit(ADD_TODO_SUCCESS);
+                    setTimeout(() => {
+                        dispatch(GET_TODO);
+                        resolve();
+                    }, 5000)
+                })
+                .catch(({data}) => {
+                    commit(ADD_TODO_ERROR, data.results);
+                    reject();
+                })
+        })
     },
 };

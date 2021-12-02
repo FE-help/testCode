@@ -16,7 +16,8 @@
     import {useStore} from '../../store';
     import {OPEN_ADD_MODAL, DELETE_TODO} from '../../store/todo/todo.types'
     import moment from 'moment'
-    import {ElMessageBox, ElMessage} from 'element-plus'
+    import {ElMessageBox, ElNotification} from 'element-plus'
+    import {DELETE_SUCCESS, DELETE_FAIL} from '../../constant/message'
 
     export default {
         components: {Delete, Edit},
@@ -39,13 +40,13 @@
                 )
                     .then(() => {
                         store.dispatch(`TodoModule/${DELETE_TODO}`, todo.objectId)
+                            .then(() => {
+                                ElNotification(DELETE_SUCCESS)
+                            })
+                            .catch(() => {
+                                ElNotification(DELETE_FAIL)
+                            })
                     })
-                    .catch(() => {
-                        ElMessage({
-                            type: 'info',
-                            message: 'Delete canceled',
-                        })
-                    });
             };
             const format = (time) => {
                 return moment(time).format('YYYY-MM-DD HH:DD:SS');
