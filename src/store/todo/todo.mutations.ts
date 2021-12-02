@@ -67,31 +67,39 @@ export const actions = {
     },
     [ADD_TODO]: ({dispatch, commit}: any, payload: any) => {
         commit(SEND_ADD_TODO_REQUEST);
-        addTodo(payload)
-            .then(() => {
-                commit(ADD_TODO_SUCCESS);
-                commit(CLOSE_ADD_MODAL);
-                setTimeout(() => {
-                    dispatch(GET_TODO)
-                }, 5000)
-            })
-            .catch(({data}) => {
-                commit(ADD_TODO_ERROR, data.results)
-            })
+        return new Promise<void>((resolve, reject) => {
+            addTodo(payload)
+                .then(() => {
+                    commit(ADD_TODO_SUCCESS);
+                    commit(CLOSE_ADD_MODAL);
+                    setTimeout(() => {
+                        dispatch(GET_TODO);
+                        resolve()
+                    }, 5000)
+                })
+                .catch(({data}) => {
+                    commit(ADD_TODO_ERROR, data.results);
+                    reject();
+                })
+        })
     },
     [EDIT_TODO]: ({dispatch, commit}: any, {id, todo}: any) => {
         commit(SEND_ADD_TODO_REQUEST);
-        updateTodo(id, todo)
-            .then(() => {
-                commit(ADD_TODO_SUCCESS);
-                commit(CLOSE_ADD_MODAL);
-                setTimeout(() => {
-                    dispatch(GET_TODO)
-                }, 5000)
-            })
-            .catch(({data}) => {
-                commit(ADD_TODO_ERROR, data.results)
-            })
+        return new Promise<void>((resolve, reject) => {
+            updateTodo(id, todo)
+                .then(() => {
+                    commit(ADD_TODO_SUCCESS);
+                    commit(CLOSE_ADD_MODAL);
+                    setTimeout(() => {
+                        dispatch(GET_TODO);
+                        resolve()
+                    }, 5000)
+                })
+                .catch(({data}) => {
+                    commit(ADD_TODO_ERROR, data.results);
+                    reject()
+                })
+        })
     },
     [DELETE_TODO]: ({dispatch, commit}: any, id: string) => {
         commit(SEND_ADD_TODO_REQUEST);

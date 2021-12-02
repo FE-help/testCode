@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-    import {ElMessageBox} from 'element-plus'
+    import {ElMessageBox, ElNotification} from 'element-plus'
     import {useStore} from '../../store';
     import {CLOSE_ADD_MODAL, ADD_TODO, EDIT_TODO} from '../../store/todo/todo.types'
 
@@ -47,9 +47,34 @@
                             title: TodoModule.editTodo.title,
                             content: TodoModule.editTodo.content,
                         }
+                    }).then(() => {
+                        ElNotification({
+                            title: '提示',
+                            message: '修改成功',
+                            type: 'success',
+                        })
+                    }).catch(() => {
+                        ElNotification({
+                            title: '提示',
+                            message: '修改失败',
+                            type: 'error',
+                        })
                     })
                 } else {
                     store.dispatch(`TodoModule/${ADD_TODO}`, Object.assign({}, TodoModule.editTodo))
+                        .then(() => {
+                            ElNotification({
+                                title: '提示',
+                                message: '添加成功',
+                                type: 'success',
+                            })
+                        }).catch(() => {
+                        ElNotification({
+                            title: '提示',
+                            message: '添加失败',
+                            type: 'error',
+                        })
+                    })
                 }
             };
             const onCancel = () => {
