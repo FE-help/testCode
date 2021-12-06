@@ -3,54 +3,76 @@
     <navMenu></navMenu>
     <div class="fff path">/{{currentRoute}}</div>
     <div class="fff title">主题</div>
-    <div class="fff user">用户</div>
+    <div class="fff user" v-for="local in locales"
+         @click="changeLanguage(local.value)"
+         :key="local">{{local.label}}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-    import { defineComponent } from 'vue'
+    import {defineComponent} from 'vue'
     import navMenu from '/src/components/nav/navMenu.vue'
+    import cookie from 'js-cookie'
+    import locales from '../../constant/locales'
+
     export default defineComponent({
         name: 'top',
-        components: { navMenu },
+        components: {navMenu},
         data() {
             return {
                 currentRoute: this.$router.currentRoute.value.name
             }
         },
-        watch:{
-            $route(){
+        watch: {
+            $route() {
                 this.currentRoute = this.$router.currentRoute.value.name
             }
         },
+        methods: {
+            changeLanguage: (value) => {
+                cookie.set('language', value || 'en');
+                location.reload();
+            }
+        },
+        setup() {
+            return {
+                locales
+            }
+        }
     })
 </script>
 <!--<script lang="ts" setup>-->
-    <!--import navMenu from '/src/components/nav/navMenu.vue'-->
+<!--import navMenu from '/src/components/nav/navMenu.vue'-->
 <!--</script>-->
 
 <style scoped lang="less">
-  .fff{
+  .fff {
     color: #ff505c;
   }
-  .main{
-    height:100vh;
-    width:100%;
-    border:1px solid #00ea69;
+
+  .main {
+    height: 100vh;
+    width: 100%;
+    border: 1px solid #00ea69;
   }
+
   // 顶导航栏
-  .top-nav{
-    height:60px;
+  .top-nav {
+    height: 60px;
     display: flex;
-    line-height:60px;
+    line-height: 60px;
     text-align: center;
-    .path{
+
+    .path {
       width: 100px;
     }
-    .title{
+
+    .title {
       flex: 1;
     }
-    .user{
+
+    .user {
       width: 100px;
     }
   }

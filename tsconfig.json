@@ -14,7 +14,9 @@
     "baseUrl": "./",
     "paths": {
       "*": ["types/*"]
-    }
+    },
+    "types": ["node"]
   },
+  "exclude": ["node_modules/**"],
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
