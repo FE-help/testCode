@@ -30,7 +30,7 @@
             }
         },
         methods: {
-            changeLanguage: (value) => {
+            changeLanguage: (value: string) => {
                 cookie.set('language', value || 'en');
                 location.reload();
             }
@@ -42,10 +42,6 @@
         }
     })
 </script>
-<!--<script lang="ts" setup>-->
-<!--import navMenu from '/src/components/nav/navMenu.vue'-->
-<!--</script>-->
-
 <style scoped lang="less">
   .fff {
     color: #ff505c;

@@ -5,7 +5,6 @@ import { createI18n } from 'vue-i18n';
 import cookie from 'js-cookie'
 
 const local = cookie.get('language');
-console.log(local);
 const i18n = createI18n({
   locale: local || 'en',
   fallbackLocale: 'en',
