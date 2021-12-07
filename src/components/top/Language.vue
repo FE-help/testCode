@@ -22,7 +22,3 @@
         location.reload();
     };
 </script>
-
-<style scoped>
-
-</style>

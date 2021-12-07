@@ -11,25 +11,20 @@
 
 <script setup lang="ts">
     import {useRoute} from 'vue-router'
-    import navMenu from '/src/components/nav/navMenu.vue'
+    import navMenu from './navMenu.vue'
     import Language from './Language.vue'
 
     const route = useRoute();
 </script>
 <style scoped lang="less">
-  .main {
-    height: 100vh;
-    width: 100%;
-    border: 1px solid #00ea69;
-  }
-
+  @import "/src/style/basic";
   // 顶导航栏
   .top-nav {
     height: 60px;
     display: flex;
     line-height: 60px;
     text-align: center;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid @basicBorderColor;
 
     .path {
       width: 100px;
@@ -42,7 +37,8 @@
     .user {
       width: 100px;
     }
-    .language{
+
+    .language {
       width: 150px;
     }
   }

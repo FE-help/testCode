@@ -7,6 +7,7 @@ import "../src/assets/css/Currency.less"
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import './style/basic.less';
+import './style/overwrite.less';
 import i18n from '../src/locales/index'
 
 

@@ -52,7 +52,7 @@
         return moment(time).format('YYYY-MM-DD HH:DD:SS');
     };
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .item-box {
     width: 100%;
     font-size: 15px;

@@ -52,8 +52,9 @@
     init();
 </script>
 <style lang="less" scoped>
+  @import "/src/style/basic";
   .common-layout {
-    border: 1px solid var(--el-border-color-base);
+    border: 1px solid @basicBorderColor;
     width: 60%;
     margin: 10px auto;
     min-width: 500px;
@@ -66,7 +67,7 @@
   }
 
   .el-footer {
-    border-top: 1px solid var(--el-border-color-base);
+    border-top: 1px solid @basicBorderColor;
     background-color: #f4f4f4;
   }
 
@@ -79,6 +80,6 @@
   }
 
   .text-content {
-    color: #6a6a6a;
+    color: @basicSubTextColor;
   }
 </style>
