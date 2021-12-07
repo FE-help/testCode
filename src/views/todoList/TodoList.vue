@@ -39,14 +39,14 @@
     const {state} = store;
     const {TodoModule} = state;
     const activeNames = ref([]);
-    const init = () => {
+    const init = (): void => {
         store.dispatch(`TodoModule/${GET_TODO}`);
     };
-    const handleClickAdd = () => {
+    const handleClickAdd = (): void => {
         store.commit(`TodoModule/${OPEN_ADD_MODAL}`);
         store.commit(`TodoModule/${ADD_TODO}`, 4);
     };
-    const handleClickInit = () => {
+    const handleClickInit = (): void => {
         init();
     };
     init();

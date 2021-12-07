@@ -32,13 +32,13 @@
     const store = useStore();
     const {state} = store;
     const {TodoModule} = state;
-    const onOpened = () => {
+    const onOpened = (): void => {
         console.log(TodoModule.editTodo);
     };
-    const onClosed = () => {
+    const onClosed = (): void => {
         store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
     };
-    const onSubmit = () => {
+    const onSubmit = (): void => {
         if (TodoModule.editTodo.objectId) {
             store.dispatch(`TodoModule/${EDIT_TODO}`, {
                 id: TodoModule.editTodo.objectId,
@@ -46,22 +46,22 @@
                     title: TodoModule.editTodo.title,
                     content: TodoModule.editTodo.content,
                 }
-            }).then(() => {
+            }).then((): void => {
                 ElNotification(EDIT_SUCCESS)
-            }).catch(() => {
+            }).catch((): void => {
                 ElNotification(EDIT_FAIL)
             })
         } else {
             store.dispatch(`TodoModule/${ADD_TODO}`, Object.assign({}, TodoModule.editTodo))
-                .then(() => {
+                .then((): void => {
                     ElNotification(ADD_SUCCESS)
                 })
-                .catch(() => {
+                .catch((): void => {
                     ElNotification(ADD_FAIL)
                 })
         }
     };
-    const onCancel = () => {
+    const onCancel = (): void => {
         store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
     };
 </script>

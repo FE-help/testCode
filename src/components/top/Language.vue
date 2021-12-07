@@ -17,7 +17,7 @@
     import cookie from 'js-cookie'
     import locales from '../../constant/locales'
 
-    const changeLanguage = (value: string) => {
+    const changeLanguage = (value: string): void => {
         cookie.set('language', value || 'en');
         location.reload();
     };

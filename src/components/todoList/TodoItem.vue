@@ -25,10 +25,10 @@
         todo: Object as todoType.Todo
     });
     const todo = props.todo;
-    const onClickEdit = () => {
+    const onClickEdit = (): void => {
         store.commit(`TodoModule/${OPEN_ADD_MODAL}`, Object.assign({}, todo));
     };
-    const onClickDelete = () => {
+    const onClickDelete = (): void => {
         ElMessageBox.confirm(
             '确定要删除吗',
             'Warning',
@@ -38,12 +38,12 @@
                 type: 'warning',
             }
         )
-            .then(() => {
+            .then((): void => {
                 store.dispatch(`TodoModule/${DELETE_TODO}`, todo.objectId)
                     .then(() => {
                         ElNotification(DELETE_SUCCESS)
                     })
-                    .catch(() => {
+                    .catch((): void => {
                         ElNotification(DELETE_FAIL)
                     })
             })

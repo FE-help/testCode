@@ -25,7 +25,7 @@
     import { menuList } from "../../constant/menu";
 
     const activeIndex = ref('1');
-    const handleSelect = () => {}
+    const handleSelect = (): void => {}
 </script>
 
 <style scoped lang="less">

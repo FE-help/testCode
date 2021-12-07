@@ -15,7 +15,7 @@ function getInstance(baseUrl: string) {
     });
 
 // 添加请求拦截器
-    axios.interceptors.request.use((config) => {
+    axios.interceptors.request.use((config): any => {
         // 在发送请求之前做些什么
         return config;
     }, function (error) {
