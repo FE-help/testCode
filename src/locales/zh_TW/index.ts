@@ -1,3 +1,5 @@
 export default {
-    message: '拟好',
+    title: '主體',
+    message: '您好',
+    language: '選擇語言'
 }

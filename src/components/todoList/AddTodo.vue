@@ -23,56 +23,45 @@
   </el-drawer>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
     import {ElMessageBox, ElNotification} from 'element-plus'
     import {useStore} from '../../store';
     import {CLOSE_ADD_MODAL, ADD_TODO, EDIT_TODO} from '../../store/todo/todo.types'
     import {EDIT_SUCCESS, EDIT_FAIL, ADD_SUCCESS, ADD_FAIL} from '../../constant/message'
 
-    export default {
-        setup() {
-            const store = useStore();
-            const {state} = store;
-            const {TodoModule} = state;
-            const onOpened = () => {
-                console.log(TodoModule.editTodo);
-            };
-            const onClosed = () => {
-                store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
-            };
-            const onSubmit = () => {
-                if (TodoModule.editTodo.objectId) {
-                    store.dispatch(`TodoModule/${EDIT_TODO}`, {
-                        id: TodoModule.editTodo.objectId,
-                        todo: {
-                            title: TodoModule.editTodo.title,
-                            content: TodoModule.editTodo.content,
-                        }
-                    }).then(() => {
-                        ElNotification(EDIT_SUCCESS)
-                    }).catch(() => {
-                        ElNotification(EDIT_FAIL)
-                    })
-                } else {
-                    store.dispatch(`TodoModule/${ADD_TODO}`, Object.assign({}, TodoModule.editTodo))
-                        .then(() => {
-                            ElNotification(ADD_SUCCESS)
-                        })
-                        .catch(() => {
-                            ElNotification(ADD_FAIL)
-                        })
+    const store = useStore();
+    const {state} = store;
+    const {TodoModule} = state;
+    const onOpened = () => {
+        console.log(TodoModule.editTodo);
+    };
+    const onClosed = () => {
+        store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
+    };
+    const onSubmit = () => {
+        if (TodoModule.editTodo.objectId) {
+            store.dispatch(`TodoModule/${EDIT_TODO}`, {
+                id: TodoModule.editTodo.objectId,
+                todo: {
+                    title: TodoModule.editTodo.title,
+                    content: TodoModule.editTodo.content,
                 }
-            };
-            const onCancel = () => {
-                store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
-            };
-            return {
-                TodoModule,
-                onOpened,
-                onSubmit,
-                onCancel,
-                onClosed,
-            }
-        },
-    }
+            }).then(() => {
+                ElNotification(EDIT_SUCCESS)
+            }).catch(() => {
+                ElNotification(EDIT_FAIL)
+            })
+        } else {
+            store.dispatch(`TodoModule/${ADD_TODO}`, Object.assign({}, TodoModule.editTodo))
+                .then(() => {
+                    ElNotification(ADD_SUCCESS)
+                })
+                .catch(() => {
+                    ElNotification(ADD_FAIL)
+                })
+        }
+    };
+    const onCancel = () => {
+        store.commit(`TodoModule/${CLOSE_ADD_MODAL}`);
+    };
 </script>

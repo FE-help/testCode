@@ -8,16 +8,13 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue'
-  export default defineComponent({
-      name: 'menuComponent',
-      props: {
-          menuList: {
-              type: Array as PropType<menuType.Menu[]>,
-              require: true,
-          },
-      }
-  })
+  import { defineComponent, PropType, defineProps } from 'vue'
+  const props = defineProps({
+      menuList: {
+          type: Array as PropType<menuType.Menu[]>,
+          require: true,
+      },
+  });
 </script>
 
 <style lang="less">

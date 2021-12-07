@@ -1,46 +1,20 @@
 <template>
   <div class="top-nav">
     <navMenu></navMenu>
-    <div class="fff path">/{{currentRoute}}</div>
-    <div class="fff title">主题</div>
-    <div class="fff user" v-for="local in locales"
-         @click="changeLanguage(local.value)"
-         :key="local">{{local.label}}
+    <div class="fff path">{{route.name}}</div>
+    <div class="fff title">{{$t('title')}}</div>
+    <div class="fff language">
+      <Language></Language>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent} from 'vue'
+<script setup lang="ts">
+    import {useRoute} from 'vue-router'
     import navMenu from '/src/components/nav/navMenu.vue'
-    import cookie from 'js-cookie'
-    import locales from '../../constant/locales'
+    import Language from './Language.vue'
 
-    export default defineComponent({
-        name: 'top',
-        components: {navMenu},
-        data() {
-            return {
-                currentRoute: this.$router.currentRoute.value.name
-            }
-        },
-        watch: {
-            $route() {
-                this.currentRoute = this.$router.currentRoute.value.name
-            }
-        },
-        methods: {
-            changeLanguage: (value: string) => {
-                cookie.set('language', value || 'en');
-                location.reload();
-            }
-        },
-        setup() {
-            return {
-                locales
-            }
-        }
-    })
+    const route = useRoute();
 </script>
 <style scoped lang="less">
   .fff {
@@ -70,6 +44,9 @@
 
     .user {
       width: 100px;
+    }
+    .language{
+      width: 150px;
     }
   }
 </style>
