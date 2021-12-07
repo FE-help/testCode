@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div>root state:{{TodoModule.test}}</div>
-    <div>TodoModule state: {{TodoModule.count}}</div>
-    <div>TodoModule getters: {{getters['TodoModule/completedTodo']}}</div>
-    <div>{{TodoModule.loading}}</div>
-    <div>{{TodoModule.drawer}}</div>
-    <div>
-      <button @click="handleClickAdd()">add count</button>
-    </div>
     <div class="common-layout">
       <el-container>
         <el-header>Todo List</el-header>
@@ -44,7 +36,7 @@
     import AddTodo from '../../components/todoList/AddTodo.vue'
 
     const store = useStore();
-    const {state, getters} = store;
+    const {state} = store;
     const {TodoModule} = state;
     const activeNames = ref([]);
     const init = () => {
