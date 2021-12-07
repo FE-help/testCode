@@ -1,6 +1,6 @@
 <template>
   <el-dropdown trigger="click">
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link cursor-pointer">
       {{$t('language')}}
     </span>
     <template #dropdown>

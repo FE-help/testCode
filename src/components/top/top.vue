@@ -1,9 +1,9 @@
 <template>
   <div class="top-nav">
     <navMenu></navMenu>
-    <div class="fff path">{{route.name}}</div>
-    <div class="fff title">{{$t('title')}}</div>
-    <div class="fff language">
+    <div class="basic-title-color path">{{route.name}}</div>
+    <div class="basic-title-color title">{{$t('title')}}</div>
+    <div class="basic-text-color language">
       <Language></Language>
     </div>
   </div>
@@ -17,10 +17,6 @@
     const route = useRoute();
 </script>
 <style scoped lang="less">
-  .fff {
-    color: #ff505c;
-  }
-
   .main {
     height: 100vh;
     width: 100%;
@@ -33,6 +29,7 @@
     display: flex;
     line-height: 60px;
     text-align: center;
+    border-bottom: 1px solid #e2e2e2;
 
     .path {
       width: 100px;

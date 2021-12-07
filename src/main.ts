@@ -6,6 +6,7 @@ import "../src/assets/css/Reset.less"
 import "../src/assets/css/Currency.less"
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+import './style/basic.less';
 import i18n from '../src/locales/index'
 
 
