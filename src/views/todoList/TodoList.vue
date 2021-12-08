@@ -51,35 +51,3 @@
     };
     init();
 </script>
-<style lang="less" scoped>
-  @import "/src/style/basic";
-  .common-layout {
-    border: 1px solid @basicBorderColor;
-    width: 60%;
-    margin: 10px auto;
-    min-width: 500px;
-  }
-
-  .el-header {
-    text-align: center;
-    background-color: #b3c0d1;
-    line-height: 60px;
-  }
-
-  .el-footer {
-    border-top: 1px solid @basicBorderColor;
-    background-color: #f4f4f4;
-  }
-
-  .el-main {
-    min-height: 90px;
-  }
-
-  .el-row {
-    padding-top: 10px;
-  }
-
-  .text-content {
-    color: @basicSubTextColor;
-  }
-</style>

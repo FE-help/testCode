@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-    import {defineProps} from 'vue';
     import {Delete, Edit} from '@element-plus/icons'
     import {useStore} from '../../store';
     import {OPEN_ADD_MODAL, DELETE_TODO} from '../../store/todo/todo.types'

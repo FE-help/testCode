@@ -3,6 +3,7 @@ import home from "../views/home/home.vue"
 import noMenu from "../views/otherPage/noMenu.vue"
 import Main from "../views/Main.vue"
 import TodoList from '../views/todoList/TodoList.vue'
+import LinksPage from '../views/linksPage/index.vue'
 
 
 const history = createWebHistory()
@@ -24,6 +25,12 @@ const routes: Array<RouteRecordRaw> = [
                 path: '/todoList',
                 name: 'todo list',
                 component: TodoList,
+                children: []
+            },
+            {
+                path: '/links',
+                name: 'links',
+                component: LinksPage,
                 children: []
             },
         ]
