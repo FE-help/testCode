@@ -17,7 +17,7 @@ export const TodoModule: Module<todoType.State, RootState> = {
         editTodo: Object.assign({}, defaultTodo),
     }),
     getters: {
-        completedTodo: (state: todoType.State) => {
+        completedTodo: (state: todoType.State): number => {
             return state.todoList.length
         }
     },

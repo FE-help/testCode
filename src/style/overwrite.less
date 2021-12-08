@@ -1,0 +1,79 @@
+@import "basic";
+/*菜单栏样式覆盖*/
+// 去除选中后下边框
+ul.el-menu-nav.el-menu--horizontal{
+  width: 150px;
+  margin: 0;
+  border: none;
+
+  > li {
+    width: 0;
+    height: 100%;
+  }
+}
+ul.el-menu-nav.el-menu--horizontal > .el-sub-menu .el-sub-menu__title {
+  border: none;
+}
+
+.menu-box-nav.el-popper {
+  top: 61px !important;
+  left: 0 !important;
+  border: none !important;
+
+  ul {
+    .el-menu-item {
+      a {
+        color: @basicTextColor;
+      }
+    }
+  }
+}
+
+/**/
+
+/*通用布局容器*/
+.common-layout {
+  border: 1px solid @basicBorderColor;
+  width: 60%;
+  margin: 10px auto;
+  min-width: 500px;
+
+  .el-header {
+    text-align: center;
+    background-color: #b3c0d1;
+    line-height: 60px;
+  }
+
+  .el-footer {
+    border-top: 1px solid @basicBorderColor;
+    background-color: #f4f4f4;
+  }
+
+  .el-main {
+    min-height: 90px;
+  }
+
+  .el-row {
+    padding-top: 10px;
+  }
+
+  .text-content {
+    color: @basicSubTextColor;
+  }
+}
+//md文件通用样式
+.md-file{
+  padding: 10px;
+}
+.md-file h1,.md-file h2,.md-file h3,.md-file h4,.md-file h5{
+  margin: 10px 0;
+}
+.md-file > ul{
+  margin: 10px 0;
+}
+.md-file > ul > li{
+  padding: 2px 0;
+}
+
+
+

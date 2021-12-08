@@ -15,7 +15,7 @@ function getInstance(baseUrl: string) {
     });
 
 // 添加请求拦截器
-    axios.interceptors.request.use((config) => {
+    axios.interceptors.request.use((config): any => {
         // 在发送请求之前做些什么
         return config;
     }, function (error) {
@@ -28,6 +28,7 @@ function getInstance(baseUrl: string) {
         // 对响应数据做点什么
         return response;
     }, function (error) {
+        console.log(error);
         // 对响应错误做点什么
         return Promise.reject(error);
     });

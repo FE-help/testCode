@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-
+    {{$t('message')}}
     Home
     <div>
       <router-view></router-view>
