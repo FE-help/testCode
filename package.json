@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
     "@types/js-cookie": "^3.0.1",
+    "@types/node": "^16.11.12",
     "axios": "^0.24.0",
     "element-plus": "^1.2.0-beta.3",
     "js-cookie": "^3.0.1",
