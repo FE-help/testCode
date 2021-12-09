@@ -18,10 +18,11 @@
     import moment from 'moment'
     import {ElMessageBox, ElNotification} from 'element-plus'
     import {DELETE_SUCCESS, DELETE_FAIL} from '../../constant/message'
+    import { defineProps } from 'vue';
 
     const store = useStore();
     const props = defineProps({
-        todo: Object as todoType.Todo
+        todo: Object
     });
     const todo = props.todo;
     const onClickEdit = (): void => {
@@ -47,7 +48,7 @@
                     })
             })
     };
-    const format = (time) => {
+    const format = (time: any) => {
         return moment(time).format('YYYY-MM-DD HH:DD:SS');
     };
 </script>
