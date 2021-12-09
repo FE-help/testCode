@@ -1,7 +1,7 @@
 <template>
   <div class="item-box">
-    {{todo.title}}
-    <span class="time">{{format(todo.createdAt)}}</span>
+    {{(todo || {}).title}}
+    <span class="time">{{format((todo || {}).createdAt)}}</span>
     <el-icon v-on:click.stop="onClickDelete" size="16">
       <delete/>
     </el-icon>
@@ -39,7 +39,7 @@
             }
         )
             .then((): void => {
-                store.dispatch(`TodoModule/${DELETE_TODO}`, todo.objectId)
+                store.dispatch(`TodoModule/${DELETE_TODO}`, (todo || {}).objectId)
                     .then(() => {
                         ElNotification(DELETE_SUCCESS)
                     })
