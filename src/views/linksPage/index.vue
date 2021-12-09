@@ -19,7 +19,6 @@
       content: '',
       loading: false
   });
-  console.log(import.meta.env.MODE);
   const getMdContent = (fileName: any) => {
       state.loading = true;
       axios.get(`/docs/${fileName}.md`)
