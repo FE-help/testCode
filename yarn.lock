@@ -121,6 +121,11 @@
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.1.tgz#04aa743e2e0a85a22ee9aa61f6591a8bc19b5d68"
   integrity sha512-7wg/8gfHltklehP+oyJnZrz9XBuX5ZPP4zB6UsI84utdlkRYLnOm2HfpLXazTwZA+fpGn0ir8tGNgVnMEleBGQ==
 
+"@types/marked@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-4.0.1.tgz#d588a7bbc4d6551c5e75249bc106ffda96ae33c5"
+  integrity sha512-ZigEmCWdNUU7IjZEuQ/iaimYdDHWHfTe3kg8ORfKjyGYd9RWumPoOJRQXB0bO+XLkNwzCthW3wUIQtANaEZ1ag==
+
 "@types/node@^16.11.12":
   version "16.11.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.12.tgz#ac7fb693ac587ee182c3780c26eb65546a1a3c10"

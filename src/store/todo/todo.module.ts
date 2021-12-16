@@ -1,4 +1,4 @@
-import {Module} from 'vuex';
+import { Module } from 'vuex';
 import { mutations, actions } from './todo.mutations'
 
 export const defaultTodo = {
@@ -10,7 +10,7 @@ export const TodoModule: Module<todoType.State, RootState> = {
     namespaced: true,
     state: () => ({
         todoList: [],
-        count: 0,
+        count: 0, 
         loading: false,
         errorMessage: '',
         drawer: false,

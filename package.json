@@ -9,6 +9,7 @@
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
     "@types/js-cookie": "^3.0.1",
+    "@types/marked": "^4.0.1",
     "@types/node": "^16.11.12",
     "axios": "^0.24.0",
     "element-plus": "^1.2.0-beta.3",
