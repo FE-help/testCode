@@ -12,8 +12,8 @@ import {
     OPEN_ADD_MODAL,
     CLOSE_ADD_MODAL
 } from "./todo.types";
-import {defaultTodo} from "./todo.module";
-import {getTodoList, addTodo, updateTodo, deleteTodo} from "../../api/todo";
+import { defaultTodo } from "./todo.module";
+import { getTodoList, addTodo, updateTodo, deleteTodo } from "../../api/todo";
 
 export const mutations = {
     [ADD_TODO]: (state: todoType.State, payload: any): void => {
@@ -55,17 +55,17 @@ export const mutations = {
 };
 
 export const actions = {
-    [GET_TODO]: ({commit}: any): void => {
+    [GET_TODO]: ({ commit }: any): void => {
         commit(SEND_GET_TODO_REQUEST);
         getTodoList()
-            .then(({data}: any): void => {
+            .then(({ data }: any): void => {
                 commit(GET_TODO_SUCCESS, data.results)
             })
-            .catch(({data}: any): void => {
+            .catch(({ data }: any): void => {
                 commit(GET_TODO_SUCCESS, data.results)
             })
     },
-    [ADD_TODO]: ({dispatch, commit}: any, payload: any): object => {
+    [ADD_TODO]: ({ dispatch, commit }: any, payload: any): object => {
         commit(SEND_ADD_TODO_REQUEST);
         return new Promise<void>((resolve, reject): void => {
             addTodo(payload)
@@ -77,13 +77,13 @@ export const actions = {
                         resolve()
                     }, 5000)
                 })
-                .catch(({data}: any): void => {
+                .catch(({ data }: any): void => {
                     commit(ADD_TODO_ERROR, data.results);
                     reject();
                 })
         })
     },
-    [EDIT_TODO]: ({dispatch, commit}: any, {id, todo}: any): object => {
+    [EDIT_TODO]: ({ dispatch, commit }: any, { id, todo }: any): object => {
         commit(SEND_ADD_TODO_REQUEST);
         return new Promise<void>((resolve, reject) => {
             updateTodo(id, todo)
@@ -95,13 +95,13 @@ export const actions = {
                         resolve()
                     }, 5000)
                 })
-                .catch(({data}: any): void => {
+                .catch(({ data }: any): void => {
                     commit(ADD_TODO_ERROR, data.results);
                     reject()
                 })
         })
     },
-    [DELETE_TODO]: ({dispatch, commit}: any, id: string): object => {
+    [DELETE_TODO]: ({ dispatch, commit }: any, id: string): object => {
         commit(SEND_ADD_TODO_REQUEST);
         return new Promise<void>((resolve, reject): void => {
             deleteTodo(id)
@@ -112,7 +112,7 @@ export const actions = {
                         resolve();
                     }, 5000)
                 })
-                .catch(({data}: any): void => {
+                .catch(({ data }: any): void => {
                     commit(ADD_TODO_ERROR, data.results);
                     reject();
                 })

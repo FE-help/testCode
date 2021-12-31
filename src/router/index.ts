@@ -6,7 +6,7 @@ import TodoList from '../views/todoList/TodoList.vue'
 import LinksPage from '../views/linksPage/index.vue'
 
 
-const history = createWebHistory()
+const history = createWebHistory();
 const routes: Array<RouteRecordRaw> = [
     {path: '/noMenu', name: 'noMenu', component: noMenu},
     {

@@ -9,7 +9,7 @@
     >
       <el-sub-menu index="1" popper-class="menu-box-nav">
         <template #title>Workspace</template>
-        <el-menu-item v-for="(menu, index) in menuList" :index="index+''">
+        <el-menu-item v-for="(menu, index) in menuList" :index="index+''" :key="index">
           <router-link active-class="basic-title-color" :to="menu.path">{{menu.title}}</router-link>
         </el-menu-item>
       </el-sub-menu>
