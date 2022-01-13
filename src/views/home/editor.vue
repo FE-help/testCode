@@ -108,7 +108,7 @@ export default defineComponent({
         elementpath: false, //元素路径是否显示
 
         content_style: 'img {max-width:100%;}', //直接自定义可编辑区域的css样式
-        // content_css: '/tinycontent.css',  //以css文件方式自定义可编辑区域的css样式，css文件需自己创建并引入
+        content_css: '/tinymce/skins/content/default/content.css',  //以css文件方式自定义可编辑区域的css样式，css文件需自己创建并引入
 
         // images_upload_url: '/apib/api-upload/uploadimg',  //后端处理程序的url，建议直接自定义上传函数image_upload_handler，这个就可以不用了
         // images_upload_base_path: '/demo',  //相对基本路径--关于图片上传建议查看--http://tinymce.ax-z.cn/general/upload-images.php
