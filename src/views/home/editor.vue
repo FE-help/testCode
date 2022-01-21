@@ -113,7 +113,7 @@ export default defineComponent({
         // images_upload_url: '/apib/api-upload/uploadimg',  //后端处理程序的url，建议直接自定义上传函数image_upload_handler，这个就可以不用了
         // images_upload_base_path: '/demo',  //相对基本路径--关于图片上传建议查看--http://tinymce.ax-z.cn/general/upload-images.php
         paste_data_images: true, //图片是否可粘贴
-        images_upload_handler: (blobInfo, success, failure) => {
+        images_upload_handler: (blobInfo:any, success:any, failure:any) => {
           if (blobInfo.blob().size / 1024 / 1024 > 2) {
             failure('上传失败，图片大小请控制在 2M 以内');
           } else {
@@ -126,7 +126,7 @@ export default defineComponent({
             };
             axios
               .post(`/api-upload/uploadimg`, params, config)
-              .then((res) => {
+              .then((res:any) => {
                 if (res.data.code == 200) {
                   success(res.data.msg); //上传成功，在成功函数里填入图片路径
                 } else {
@@ -143,10 +143,10 @@ export default defineComponent({
     };
   },
   watch: {
-    value(newValue) {
+    value(newValue:any) {
       this.contentValue = newValue;
     },
-    contentValue(newValue) {
+    contentValue(newValue:any) {
       this.$emit('input', newValue);
     },
   },
